@@ -1,0 +1,80 @@
+{
+  "name": "dbz-deck",
+  "version": "1.0.0",
+  "description": "app using mevn stack",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./src/server/server.js",
+    "client": "webpack-dev-server --mode development --devtool inline-source-map --hot --history-api-falldback --watch",
+    "server": "nodemon ./src/server/server.js",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pho3niix/dbz-deck.git"
+  },
+  "keywords": [
+    "dbz",
+    "vue",
+    "node",
+    "mongo",
+    "express",
+    "stress",
+    "dbs"
+  ],
+  "author": "Hugo Costilla",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pho3niix/dbz-deck/issues"
+  },
+  "homepage": "https://github.com/pho3niix/dbz-deck#readme",
+  "dependencies": {
+    "@babel/polyfill": "^7.6.0",
+    "@vue/cli": "^3.10.0",
+    "axios": "^0.19.0",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.19.0",
+    "concurrently": "^4.1.2",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.4",
+    "core-js": "^2.6.9",
+    "dotenv": "^8.1.0",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.1.6",
+    "express-session": "^1.16.2",
+    "http-errors": "^1.7.3",
+    "lodash": "^4.17.15",
+    "material-components-vue": "^1.2.0",
+    "moment": "^2.24.0",
+    "mongod": "^2.0.0",
+    "mongoose": "^5.6.9",
+    "morgan": "^1.9.1",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "vue": "^2.6.10",
+    "vue-axios": "^2.1.4",
+    "vue-router": "^3.1.2",
+    "vue-style-loader": "^4.1.2",
+    "vuex": "^3.1.1",
+    "vuex-persistedstate": "^2.5.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "babel-loader": "^8.0.6",
+    "babel-preset-vue": "^2.0.2",
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^3.2.0",
+    "html-webpack-plugin": "^3.2.0",
+    "nodemon": "^1.19.1",
+    "sass": "^1.22.10",
+    "sass-loader": "^7.2.0",
+    "url-loader": "^2.1.0",
+    "vue-loader": "^15.7.1",
+    "vue-template-compiler": "^2.6.10",
+    "webpack": "^4.39.2",
+    "webpack-cli": "^3.3.6",
+    "webpack-dev-server": "^3.8.0"
+  }
+}
