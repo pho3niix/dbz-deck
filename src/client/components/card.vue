@@ -2,7 +2,7 @@
     <div class="card">
         <div id="content">
             <div id="image">
-                <img :src="'http://localhost:8080/uploads/'+file" alt="">
+                <img :src="serve+'/uploads/'+file" alt="">
             </div>
             <div id="text">
                 <p>Name: {{ name | capital}}
@@ -19,6 +19,7 @@
 
 <script>
     import {mapState} from 'vuex';
+    import {SERVER_API} from '../main'
 
     export default {
         name: 'card',
@@ -30,7 +31,7 @@
         },
         data(){
             return{
-
+                serve: SERVER_API
             }  
         },
         methods: {
@@ -54,7 +55,7 @@
             }
         },
         computed:{
-
+            
         }
     }
 </script>
