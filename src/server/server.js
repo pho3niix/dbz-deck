@@ -10,8 +10,8 @@ const fileupload = require('express-fileupload');
 // const normalizePort = require('normalize-port');
 
 //Set up default mongoose connection
-// var mongoDB = `${process.env.DB_HOST}`;
-var mongoDB = 'mongodb://localhost:27017/users';//base de datos local
+var mongoDB = `${process.env.DB_HOST}`;
+// var mongoDB = 'mongodb://localhost:27017/users';//base de datos local
 // var mongoDB = 'mongodb+srv://<user>:<password>@cluster0-srdla.mongodb.net/users?retryWrites=true&w=majority';//conexion remota MongoDB Atlas
 mongoose.connect(
     mongoDB,
