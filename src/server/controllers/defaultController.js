@@ -15,7 +15,7 @@ control.newMario = async (req, res)=>{
     let info = image.name.toString().split(',');
     let format = info[3].slice(info[3].lastIndexOf('.'),info[3].length);
     let imageName = (index.length+1)+info[0]+format;
-    let path = 'public/uploads/'+imageName;
+    let path = './public/uploads/'+imageName;
     let model = new marioModel({
         name:info[0],
         power:info[1],
@@ -103,7 +103,7 @@ control.delWorld = (req, res)=>{
     let info = req.body.i;
     let id = info._id;
     let file =info.document;
-    let path = 'public/uploads/'+file;
+    let path = './public/uploads/'+file;
 
     marioModel.deleteOne({_id:id})
     .then(data=>{
