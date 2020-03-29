@@ -61,6 +61,7 @@
         },
         mounted(){
             this.$store.dispatch('getWorld');
+            console.log(process.env.SERVER_HOST);
         },
         computed:{
             ...mapState([
