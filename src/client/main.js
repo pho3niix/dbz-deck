@@ -5,7 +5,6 @@ import axios from 'axios';
 import VueAxios from 'vue-axios';
 import Vuex from 'vuex';
 import store from './store';
-export const SERVER_API = process.env.SERVER_API;
 
 Vue.use(VueAxios, axios, Vuex);
 

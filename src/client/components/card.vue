@@ -19,7 +19,6 @@
 
 <script>
     import {mapState} from 'vuex';
-    import {SERVER_API} from '../main'
 
     export default {
         name: 'card',
@@ -31,7 +30,7 @@
         },
         data(){
             return{
-                serve: SERVER_API
+                serve:process.env.SERVER_HOST
             }  
         },
         methods: {

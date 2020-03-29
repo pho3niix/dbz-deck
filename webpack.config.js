@@ -3,6 +3,7 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const dotenv = require('dotenv').config();
+const webpack = require('webpack');
 require("@babel/polyfill");
 
 module.exports= {
@@ -79,6 +80,9 @@ module.exports= {
         new HtmlWebpackPlugin({
             template: './public/index.html'
         }),
-        new CleanWebpackPlugin()
-    ]
+        new CleanWebpackPlugin(),
+        new webpack.DefinePlugin({
+            'process.env.SERVER_HOST': JSON.stringify(process.env.SERVER_API)
+        })
+]
 };
