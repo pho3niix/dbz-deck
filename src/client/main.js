@@ -5,6 +5,8 @@ import axios from 'axios';
 import VueAxios from 'vue-axios';
 import Vuex from 'vuex';
 import store from './store';
+import vuetify from './plugins/vuetify';
+import './assets/styles/main.css';
 
 Vue.use(VueAxios, axios, Vuex);
 
@@ -19,6 +21,7 @@ new Vue(
     {
       store,
       router,
+      vuetify,
       render: h => h(App),
     }
 ).$mount('#app')

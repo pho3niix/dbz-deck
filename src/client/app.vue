@@ -1,5 +1,6 @@
 <template>
-    <div id="app">
+    <v-app>
+        <div id="app">
         <nav id="nav">
             <ul>
                 <li>
@@ -12,6 +13,7 @@
         </nav>
         <router-view/>
     </div>
+    </v-app>
 </template>
 
 <script>
@@ -26,6 +28,7 @@
         margin: 0;
         padding: 0;
     }
+
     input[type='button']{
         cursor: pointer;
         outline: none;

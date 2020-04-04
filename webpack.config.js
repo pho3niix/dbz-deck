@@ -3,7 +3,6 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
-const webpack = require('webpack');
 require("@babel/polyfill");
 
 module.exports= {
@@ -33,30 +32,26 @@ module.exports= {
                 }
             },
             {
-                test: /\.scss$/,
-                use: [
-                'vue-style-loader',
-                'css-loader',
+                test:/\.s(c|a)ss$/,
+                use:[
+                    'vue-style-loader',
+                    'css-loader',
                     {
-                        loader: 'sass-loader',
+                        loader:'sass-loader',
                         options:{
-                            includePaths: ['./node_modules']
-                        }   
+                            implementation: require('sass'),
+                            sassOptions:{
+                                fiber:require('fibers')
+                            }
+                        }
                     }
                 ]
             },
             {
-                test: /\.sass$/,
-                use: [
+                test:/\.css/,
+                use:[
                     'vue-style-loader',
-                    'css-loader',
-                    {
-                    loader: 'sass-loader',
-                    options: {
-                        indentedSyntax: true,
-                        includePaths: ['./node_modules']
-                    }
-                    }
+                    'css-loader'
                 ]
             },
             {

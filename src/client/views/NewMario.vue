@@ -3,17 +3,38 @@
         <div id="image">
             <img src="../assets/dbz.jpg" alt="super">
         </div>
-        <div id="form">
+        <form id="form">
             <h1 id="titulo">{{ msg }}</h1>
             <div id="forma">
-                <input ref="first" v-on:keyup.enter="enviar()" v-model="char" type="text" name="nick" id="character" placeholder="Character Name"><br>
-                <input v-on:keyup.enter="enviar()" v-model="power" type="text"
-                v-on:keypress="number" name="power" id="power" placeholder="Power"><br>
-                <input v-on:keyup.enter="enviar()" v-model="life" type="text" v-on:keypress="number" v-on:input="number" name="life" id="life" placeholder="Life"><br><br>
-                <input type="file" name="" id="files" value="Upload image" @change="upload"><br><br>
-                <input type="button" value="Save" id="save" v-on:click="enviar()">
+                <v-text-field ref="first" name="char" v-model="char" label="Character Name"></v-text-field>
+                <v-text-field name="power" v-model="power" label="Power" @keypress="number"></v-text-field>
+                <v-text-field name="life" v-model="life" label="Life" @keypress="number"></v-text-field>
+                <v-file-input v-model="file" label="Subir imagen"></v-file-input>
+                <v-btn color="primary" lass="ma-2" @click="enviar()">Enviar 
+                    <i style="font-size:25px; color:white; margin-left:4px; margin-top:-1px;" class="mdi mdi-cloud-upload"></i>
+                </v-btn>
             </div>
-        </div>
+        </form>
+        
+        <v-snackbar
+        bottom
+        color="error"
+        v-model="barsErr">
+            {{textAlert}}
+        <v-btn color="red" text @click="barsErr=false">
+            <i class="mdi mdi-close-circle-outline"></i>
+        </v-btn>
+        </v-snackbar>
+
+        <v-snackbar
+        top
+        color="success"
+        v-model="barsSucces">
+            <i class="mdi mdi-checkbox-marked-circle"></i>{{textSuccess}}
+        <v-btn color="red" text @click="barsSucces=false">
+            <i class="mdi mdi-close-circle-outline"></i>
+        </v-btn>
+        </v-snackbar>
     </div>
 </template>
 
@@ -25,38 +46,41 @@
                 power: null,
                 life: null,
                 msg: 'DBZ deck',
-                image:''
+                image:'',
+                file:[],
+                barsErr:false,
+                textAlert:'Asegurese de llenar todos los campos',
+                barsSucces:false,
+                textSuccess:'Archivo guardado'
             }
         },
         mounted() {
             this.$refs.first.focus();
         },
         methods: {
-            upload(event){
-                let image = event.target.files[0];
-                let data = new FormData();
-                data.append('image', image, [this.char,this.power,this.life, image.name]);
-                this.image = data;
-            },
             enviar() {
-                if(!this.char || !this.power==null || !this.life || !this.image){
-                    alert('Asegurese de llenar todos los campos');
+                let image = this.file;
+                if(!image || !this.char || !this.power || !this.life){
+                    this.barsErr=true;
                 }else{
+                    let data = new FormData();
+                    data.append('image', image, [this.char,this.power,this.life, image.name]);
+                    this.image = data;
                     this.axios.post('/api/newMario', this.image)
-                    .then((res)=>{
-                        let input = document.getElementById('files');
-                        
-                        alert('Datos Guardados');
+                    .then((res)=>{  
+                        this.barsSucces=true;
                         this.char = "";
                         this.power = "";
                         this.life = "";
                         this.$refs.first.focus();
-                        input.value = "";
+                        this.file=[];
+                        this.$store.dispatch('getWorld');
                     })
                     .catch(err=>{
                         console.log(err);
                     })
-                };
+                }
+                
             },
             number ($event) {
                 let keyCode = $event.keyCode;
@@ -112,7 +136,7 @@
             }
 
             #forma{
-                margin-top: 5vh;
+                margin-top: 2vh;
                 width: 80%;
                 p{
                     margin-top: 2vh;
