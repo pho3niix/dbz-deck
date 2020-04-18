@@ -17,7 +17,7 @@
         </form>
         
         <v-snackbar
-        bottom
+        top
         color="error"
         v-model="barsErr">
             {{textAlert}}

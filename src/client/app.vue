@@ -42,11 +42,6 @@
         outline: 0;
     }
 
-    #app{
-        height: 100vh;
-        overflow-x: hidden;
-    }
-
     #nav{
         height: 10vh;
         width: 100vw;
