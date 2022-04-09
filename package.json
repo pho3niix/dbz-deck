@@ -46,7 +46,7 @@
     "http-errors": "^1.7.3",
     "lodash": "^4.17.15",
     "material-components-vue": "^1.2.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "mongod": "^2.0.0",
     "mongoose": "^5.6.9",
     "morgan": "^1.9.1",
